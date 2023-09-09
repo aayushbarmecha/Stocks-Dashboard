@@ -1,0 +1,3 @@
+onKeyUp={ (e) => this.validateBtn(e.target.value) }
+=> This is an event in React that triggers when a user releases a key on their keyboard while an element has focus. For example, if an input field has focus and a user presses and releases a key, the onKeyUp event will be triggered.
+
