@@ -113,6 +113,11 @@ const FilterCard = (props) => {
     const [validatorStartDate, setValidatorStartDate] = useState('');
     const [validatorEndDate, setValidatorEndDate] = useState('');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    let current_date = new Date();
+    let year = current_date.getFullYear();
+let month = String(current_date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+let day = String(current_date.getDate()).padStart(2, '0');
+let formattedDate = `${year}-${month}-${day}`;
 
     useEffect(() => {
         if (props.showFilterDOM) {
@@ -121,14 +126,12 @@ const FilterCard = (props) => {
     }, [props.showFilterDOM]);
 
     const startDateValidator = (val) => {
-        let current_date = new Date();
-
+        // let current_date = new Date();
         setValidatorStartDate(val);
-
         if (
-            Date.parse(validatorStartDate) < Date.parse(validatorEndDate) &&
-            Date.parse(validatorStartDate) < current_date &&
-            Date.parse(validatorEndDate) < current_date
+            val < validatorEndDate &&
+            val < formattedDate &&
+            validatorEndDate < formattedDate
         ) {
             setIsButtonDisabled(false);
         } else {
@@ -137,16 +140,19 @@ const FilterCard = (props) => {
     };
 
     const endDateValidator = (val) => {
-        let current_date = new Date();
-
+        // let current_date = new Date();
+        console.log("val(aka end date):" + val);
+        console.log("current_date"+formattedDate);
+        console.log("start_date"+validatorStartDate);
         setValidatorEndDate(val);
-
         if (
-            Date.parse(validatorStartDate) < Date.parse(validatorEndDate) &&
-            Date.parse(validatorEndDate) < current_date
+            validatorStartDate < val &&
+            val < formattedDate
         ) {
+            // console.log("True");
             setIsButtonDisabled(false);
         } else {
+            // console.log("False");
             setIsButtonDisabled(true);
         }
     };
