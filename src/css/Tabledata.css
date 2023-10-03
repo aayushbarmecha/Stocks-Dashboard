@@ -1,4 +1,4 @@
-.table-data.card-container{
+ .table-data.card-container{
     padding: 10px;
     font-size: 13px;
     margin-top: 20px;
@@ -40,4 +40,10 @@
     top: 53%;
     left: 50%;
     transform: translate(-50%, -50%);
+} 
+.table td, .table th {
+    text-align: center;
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
 }

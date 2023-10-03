@@ -1,5 +1,5 @@
 import '../css/Tabledata.css';
-import '../css/styles.css';
+// import '../css/styles.css';
 import React,{useState} from 'react';
 
 export default function TableDataCard(props){
@@ -29,7 +29,7 @@ export default function TableDataCard(props){
                 <h2 className="h6 mb-3">Recent Results:</h2>
                 {
                     props.showTableData?
-                    <table>
+                    <table className='table'>
                         <thead>
                             <tr>
                                 <th scope="col">Stock Code</th>

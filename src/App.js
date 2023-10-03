@@ -1,61 +1,3 @@
-// import React, { useState } from 'react';
-// import SearchCard from '../src/components/SearchCard';
-// import FilterCard from '../src/components/FilterCard';
-// import Tabledata from '../src/components/Tabledata';
-// import GraphCard from '../src/components/GraphCard';
-// import './App.css';
-
-// export default function App(){
-//   return (
-
-//      const [state, setState]=useState({
-//       tableData:[],
-//       graphData:[],
-//       activeStockValues:'',
-//       showFilterDom='false',
-//       showFilterData:'false',
-//       showTableData:'false',
-//       showGraphData:'false',
-//       lsArray:[],
-//       option:[]
-//     });
-
-
-//     <div className="row app-container__row">
-//       <div className='col-12 app-container__container'>
-//         <div className='app-container__left'>
-//           <SearchCard> SearchCard</SearchCard>
-//           <FilterCard> FilterCard</FilterCard>
-//         </div>
-//         <div className='app-container__right'>
-//           <div className='card card-container graph'>
-//             <div className='card-body'>
-//               {/* {
-//                 this.state.showGraphData
-//                 ?
-//                 <div>
-//                   <select className="custom-select main__chart-select" onChange={ (e) => this.checkStockCode(e.target.value) }>
-//                     { optionSelectDOM }
-//                   </select>
-//                   { graphCardDOM }
-//                 </div>
-//                 :
-//                 <p no-graph-data-message>No current stock found. Please go to the first box and search for a stock.</p>
-//               } */}
-//               <GraphCard>GraphCard</GraphCard>
-//             </div>
-//           </div>
-          
-//         </div>
-//         <div className="row table-data-row">
-//           <div className="col-12 table-data-col">
-//             <Tabledata>TabledataCard</Tabledata>
-//             </div>
-//           </div>
-//       </div>
-//     </div>
-//   );
-// }
 import React, { useState, useEffect } from 'react';
 import SearchCard from '../src/components/SearchCard';
 import FilterCard from '../src/components/FilterCard';
@@ -74,20 +16,9 @@ const App = () => {
     const [showGraphData, setShowGraphData] = useState(false);
     const [lsArray, setLsArray] = useState([]);
 
-    // useEffect(() => {
-    //     // console.log(graphData);
-    //     graphData.forEach((graphData, index) => {
-    //         // console.log(document.querySelector('#myChart'+graphData.stockValue));
-    //         // console.log(document.querySelector('myChart-'));
-    //         document.querySelector(`#myChart-${graphData.stockValue).style.display = "none";
-    //         if(index === graphData.length - 1){
-    //             document.querySelector('myChart-' + graphData.stockValue).style.display = "block";
-    //         }
-    //     });
-    // }, [graphData]);
-
     useEffect(() => {
       graphData.forEach((graphData, index) => {
+            console.log(graphData);
           const element = document.querySelector(`#myChart-${graphData.stockValue}`);
           if (element) {
               element.style.display = "none";
@@ -141,10 +72,6 @@ const App = () => {
         
             setLsArray([...lsArray, graph_array.stockValue]);
             localStorage.setItem('historyStockArray', JSON.stringify(lsArray));
-            // console.log("graph_array.response.t="+graph_array.response.t);
-            // console.log("graph_array.response.s="+graph_array.response.s);
-            // console.log("graphy_array="+graph_array[0]);
-            // console.log("graphy_array="+graph_array[1]);
             if(graph_array.response.s !== "no_data"){
 
                 for(let i = 0; i < graph_array.response.t.length; i++){
@@ -183,10 +110,12 @@ const App = () => {
     let optionSelectDOM = '';
 
     if(showGraphData){
+        console.log('Graph');
         graphCardDOM = graphData.map((graphData, index) => {
-            console.log(graphData.response);
+            // console.log(graphData.response);
             if(graphData.response !== "no_data"){
                 return (
+                    // <div>hello</div>
                     <GraphCard
                         key = { index }
                         tableData = { tableData }

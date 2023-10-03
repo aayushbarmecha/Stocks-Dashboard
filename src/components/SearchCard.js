@@ -54,23 +54,19 @@ function SearchCard  (props){
               token: 'cju19ehr01qr9581vuc0cju19ehr01qr9581vucg'
             }
         });
-
+        console.log(table_response);
         if(table_response){
-            // console.log("table_response:"+table_response.t);
-            // console.log("table_response:"+table_response.s);
             setLoadingApi(true);
         }
-        // console.log("https://finnhub.io/api/v1/stock/candle?symbol=IOC&exchange=BO&resolution=1&from=1693493346&to=1693752546&token=cju19ehr01qr9581vuc0cju19ehr01qr9581vucg");
         const graph_response = await stocks.get('/stock/candle', {
             params: {
               symbol: stockValue,
               resolution: 5,
-              from: start,
-              to: end,
+              from: end,              
+              to: start,
               token: 'cju19ehr01qr9581vuc0cju19ehr01qr9581vucg'
             }
         });
-
         setSearchedStock(prevArray => prevArray.concat(stockValue));
 
         if(checkForExist){
@@ -94,9 +90,10 @@ function SearchCard  (props){
     return(
         <div className="card card-container search">
             <div className="card-body">
-                <h2 className="h6 mb-0">SEARCH STOCK CODE</h2>
+                <h2 className="h6 mb-0">SEARCH STOCK CODE:</h2>
                 <input type="text" className="form-control stock-code_value" placeholder="Stock Code Eg:AMZN" onKeyUp={ (e) => validateBtn(e.target.value) }></input>
                 <button className="btn btn-secondary w-100 btn-search" onClick={ () => sendSearchResult(true, '') } disabled={ loading_api }>Search Results<FaSearch /></button>
+                <button className="btn btn-secondary w-100 btn-search" onClick={() => window.open("https://drive.google.com/file/d/1q5t2fdFA_zRIvCYJixQW5OmmunXrVo2A/view?usp=sharing","_blank")}>Search Codes<FaSearch /></button>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 .filter.card-container{
     padding: 10px;
     font-size: 13px;
-    height: calc(57% - 10px);
+    height: calc(67% - 10px);
 }
 
 .filter.card-container .card-body{
