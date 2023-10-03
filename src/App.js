@@ -18,7 +18,6 @@ const App = () => {
 
     useEffect(() => {
       graphData.forEach((graphData, index) => {
-            console.log(graphData);
           const element = document.querySelector(`#myChart-${graphData.stockValue}`);
           if (element) {
               element.style.display = "none";
@@ -110,7 +109,6 @@ const App = () => {
     let optionSelectDOM = '';
 
     if(showGraphData){
-        console.log('Graph');
         graphCardDOM = graphData.map((graphData, index) => {
             // console.log(graphData.response);
             if(graphData.response !== "no_data"){

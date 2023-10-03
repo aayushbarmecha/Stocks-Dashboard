@@ -54,7 +54,6 @@ function SearchCard  (props){
               token: 'cju19ehr01qr9581vuc0cju19ehr01qr9581vucg'
             }
         });
-        console.log(table_response);
         if(table_response){
             setLoadingApi(true);
         }
